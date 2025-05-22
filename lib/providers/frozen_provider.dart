@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 class FrozenProvider extends ChangeNotifier {
   final String _baseUrl =
-      'cadb49fa27bf8ac7700e.free.beeceptor.com/api/frozen/';
+      'https://cadb49fa27bf8ac7700e.free.beeceptor.com/api/frozen/';
   final List<Frozen> personajes = [];
   late Frozen selectedPersonaje;
   File? newPicture;
