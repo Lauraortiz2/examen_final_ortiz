@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 
 class FrozenProvider extends ChangeNotifier {
   final String _baseUrl =
-      'https://cadb49fa27bf8ac7700e.free.beeceptor.com/api/frozen/';
-  final List<Frozen> personajes = [];
+      'cadb49fa27bf8ac7700e.free.beeceptor.com';
+  List<Frozen> personajes = [];
   late Frozen selectedPersonaje;
   File? newPicture;
   bool isLoading = true;
@@ -22,15 +22,9 @@ class FrozenProvider extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    final url = Uri.https(_baseUrl);
+    final url = Uri.https(_baseUrl,'api/frozen');
     final resp = await http.get(url);
-    final Map<String, dynamic> frozenMap = json.decode(resp.body);
-
-    frozenMap.forEach((key, value) {
-      final tempPersonaje = Frozen.fromMap(value);
-     tempPersonaje.id = key;
-      personajes.add(tempPersonaje);
-    });
+    personajes = frozenFromMap(resp.body);
 
     isLoading = false;
     notifyListeners();

@@ -1,4 +1,12 @@
+// To parse this JSON data, do
+//
+//     final frozen = frozenFromMap(jsonString);
+
 import 'dart:convert';
+
+List<Frozen> frozenFromMap(String str) => List<Frozen>.from(json.decode(str).map((x) => Frozen.fromMap(x)));
+
+String frozenToMap(List<Frozen> data) => json.encode(List<dynamic>.from(data.map((x) => x.toMap())));
 
 class Frozen {
     String id;
@@ -16,10 +24,6 @@ class Frozen {
         required this.fechaNacimiento,
         required this.colorOjos,
     });
-
-    factory Frozen.fromJson(String str) => Frozen.fromMap(json.decode(str));
-
-    String toJson() => json.encode(toMap());
 
     factory Frozen.fromMap(Map<String, dynamic> json) => Frozen(
         id: json["id"],
