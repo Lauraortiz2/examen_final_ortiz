@@ -1,4 +1,3 @@
-import 'package:examen_final_ortiz/providers/frozen_provider.dart';
 import 'package:examen_final_ortiz/widgets/personajes_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +13,7 @@ class HomeScreen extends StatelessWidget {
     final frozenProvider = Provider.of<FrozenProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Examen final')),
+      appBar: AppBar(title: Text('Frozen')),
       body: SingleChildScrollView(
         child: Column(children: [
         PersonajesSlider(personajes: frozenProvider.personajes)

@@ -2,9 +2,11 @@ import 'package:examen_final_ortiz/models/frozen.dart';
 import 'package:flutter/material.dart';
 
 class PersonajeDetailsScreen extends StatelessWidget {
+  const PersonajeDetailsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final Frozen personajes = ModalRoute.of(context)?.settings.arguments as Frozen;
+    final Frozen personaje = ModalRoute.of(context)?.settings.arguments as Frozen;
 
     return Scaffold(
 appBar: AppBar(
@@ -17,7 +19,7 @@ appBar: AppBar(
           alignment: Alignment.center,
           margin: const EdgeInsets.symmetric(vertical: 150),
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child:( _Overview(personajes: personajes)),
+          child:( _Overview(personaje: personaje)),
         ),
       ),
     );
@@ -25,7 +27,7 @@ appBar: AppBar(
 }
 
 class _Overview extends StatelessWidget {
-  final Frozen personajes;
+  final Frozen personaje;
   final TextStyle titulo = const TextStyle(
     color: Colors.black87,
     fontWeight: FontWeight.bold,
@@ -37,7 +39,7 @@ class _Overview extends StatelessWidget {
     fontSize: 20,
   );
 
-  const _Overview({required this.personajes});
+  const _Overview({required this.personaje});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class _Overview extends StatelessWidget {
             text: TextSpan(
               text: 'Nombre: ',
               style: titulo,
-              children: <TextSpan>[TextSpan(text: personajes.nom, style: info)],
+              children: <TextSpan>[TextSpan(text: personaje.nom, style: info)],
             ),
           ),
           RichText(
@@ -61,7 +63,7 @@ class _Overview extends StatelessWidget {
               text: 'Descripción: ',
               style: titulo,
               children: <TextSpan>[
-                TextSpan(text: personajes.descripcio, style: info),
+                TextSpan(text: personaje.descripcio, style: info),
               ],
             ),
           ),
@@ -71,7 +73,7 @@ class _Overview extends StatelessWidget {
               text: 'Fecha de nacimiento: ',
               style: titulo,
               children: <TextSpan>[
-                TextSpan(text: personajes.fechaNacimiento, style: info),
+                TextSpan(text: personaje.fechaNacimiento, style: info),
               ],
             ),
           ),
@@ -80,12 +82,12 @@ class _Overview extends StatelessWidget {
             text: TextSpan(
               text: 'Color de ojos: ',
               style: titulo,
-              children: <TextSpan>[TextSpan(text: personajes.colorOjos, style: info)],
+              children: <TextSpan>[TextSpan(text: personaje.colorOjos, style: info)],
             ),
           ),
           FadeInImage(
             placeholder: const AssetImage('assets/loading.gif'),
-            image: NetworkImage(personajes.foto),
+            image: NetworkImage(personaje.foto),
             height: 150,
           ),
         ],

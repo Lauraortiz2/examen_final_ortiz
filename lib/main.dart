@@ -1,4 +1,3 @@
-import 'package:examen_final_ortiz/providers/frozen_provider.dart';
 import 'package:examen_final_ortiz/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
