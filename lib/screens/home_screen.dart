@@ -1,3 +1,5 @@
+import 'package:examen_final_ortiz/providers/frozen_provider.dart';
+import 'package:examen_final_ortiz/widgets/personajes_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,18 +10,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoginForm = Provider.of<LoginFormProvider>(context);
+    final loginForm = Provider.of<LoginFormProvider>(context);
+    final frozenProvider = Provider.of<FrozenProvider>(context);
 
     return Scaffold(
       appBar: AppBar(title: Text('Examen final')),
       body: SingleChildScrollView(
-        child: Column(),
+        child: Column(children: [
+        PersonajesSlider(personajes: frozenProvider.personajes)
+        ],),
       ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'logout',
         child: const Icon(Icons.exit_to_app),
         onPressed: () {
-          LoginForm.signOut();
+          loginForm.signOut();
           Navigator.of(context).pushNamed('login');
         },
       ),
